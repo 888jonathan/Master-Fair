@@ -17,3 +17,5 @@ asdf <- filter(df, issue_d < "2018-01-01", issue_d > "2016-12-01",
   group_by(grade) %>% 
   summarise(n = n()) %>% 
   mutate(freq = n/ sum(n))
+
+#haha
