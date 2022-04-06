@@ -24,29 +24,30 @@ num <-asdf <- filter(df, issue_d < "2017-10-01", issue_d > "2015-12-01") %>%
   summarise(n = n()) %>% 
   mutate(freq = n/ sum(n))
 
+## Calculate the overall data structute
 # Average interest rate by grades
 
-a1 <- filter(df, issue_d < "2018-01-01", issue_d > "2009-12-01") %>%
-  group_by(grade) %>% 
-  summarise(n = n(), avg_int=mean(int_rate)) %>% 
-  mutate(grade_freq = n/ sum(n)) %>% 
-  ungroup()
-
-a2 <- filter(df, issue_d < "2018-01-01", issue_d > "2009-12-01", loan_status %in% ("Charged Off")) %>%
-  group_by(grade) %>% 
-  count(loan_status) %>% 
-  ungroup() %>% 
-  mutate(prob_default =n / a1["n"])
-
-b1 <- filter(df, issue_d < "2017-10-01", issue_d > "2015-12-01") %>%
-  group_by(grade) %>% 
-  summarise(n = n(), avg_int=mean(int_rate)) %>% 
-  mutate(grade_freq = n/ sum(n)) %>% 
-  ungroup()
-
-b2 <- filter(df, issue_d < "2017-10-01", issue_d > "2015-12-01", loan_status %in% ("Charged Off")) %>%
-  group_by(grade) %>% 
-  count(loan_status) %>% 
-  ungroup() %>% 
-  mutate(prob_default =n / a1["n"])
+# a1 <- filter(df, issue_d < "2018-01-01", issue_d > "2009-12-01") %>%
+#   group_by(grade) %>% 
+#   summarise(n = n(), avg_int=mean(int_rate)) %>% 
+#   mutate(grade_freq = n/ sum(n)) %>% 
+#   ungroup()
+# 
+# a2 <- filter(df, issue_d < "2018-01-01", issue_d > "2009-12-01", loan_status %in% ("Charged Off")) %>%
+#   group_by(grade) %>% 
+#   count(loan_status) %>% 
+#   ungroup() %>% 
+#   mutate(prob_default =n / a1["n"])
+# 
+# b1 <- filter(df, issue_d < "2017-10-01", issue_d > "2015-12-01") %>%
+#   group_by(grade) %>% 
+#   summarise(n = n(), avg_int=mean(int_rate)) %>% 
+#   mutate(grade_freq = n/ sum(n)) %>% 
+#   ungroup()
+# 
+# b2 <- filter(df, issue_d < "2017-10-01", issue_d > "2015-12-01", loan_status %in% ("Charged Off")) %>%
+#   group_by(grade) %>% 
+#   count(loan_status) %>% 
+#   ungroup() %>% 
+#   mutate(prob_default =n / a1["n"])
 
