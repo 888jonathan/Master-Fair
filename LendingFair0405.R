@@ -8,6 +8,14 @@ current_path = rstudioapi::getActiveDocumentContext()$path
 setwd(dirname(current_path))
 # print(getwd())
 
+# Check total observations
+df.a <- read_csv("./data/Loan_status_2007-2020Q3.gzip", col_names = TRUE, col_select = c("id"))
+nrow(df.a)
+
+# Check the name of variables
+df.b <- read_csv("./data/Loan_status_2007-2020Q3.gzip", col_names = TRUE, n_max = 1)
+names(df.b)
+
 #list.files("./data")
 df <- read_csv("./data/Loan_status_2007-2020Q3.gzip", col_names = TRUE,
                col_select = c("issue_d", "grade", "loan_status", "installment", "int_rate"), n_max = 100000)
